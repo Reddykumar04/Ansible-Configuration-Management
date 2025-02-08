@@ -1,0 +1,5 @@
+roles/nginx_setup/handlers/main.yml
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted

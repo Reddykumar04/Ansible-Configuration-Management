@@ -1,0 +1,18 @@
+# .github/workflows/deploy.yml
+name: Deploy Configuration
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install Ansible
+        run: sudo apt update && sudo apt install ansible -y
+      - name: Install Required Collections
+        run: ansible-galaxy install -r requirements.yml
+      - name: Run Ansible Playbook
+        run: ansible-playbook -i inventory.ini server_setup.yml
