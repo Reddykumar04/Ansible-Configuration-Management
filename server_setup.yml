@@ -1,4 +1,3 @@
-server_setup.yml
 - name: Configure Servers
   hosts: all
   become: yes
